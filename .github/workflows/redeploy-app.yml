@@ -9,16 +9,19 @@ jobs:
   trigger-vercel:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Vercel deploy hook
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Redeploy production
         env:
-          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
-            echo "Missing secret VERCEL_DEPLOY_HOOK."
-            echo "Create a Deploy Hook in Vercel → Project → Settings → Git → Deploy Hooks"
-            echo "Then add it as a repository secret named VERCEL_DEPLOY_HOOK."
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "Missing secret VERCEL_TOKEN."
+            echo "Create a token at https://vercel.com/account/tokens"
+            echo "Then: gh secret set VERCEL_TOKEN -R Tlhogi007/react-mastery-content"
             exit 1
           fi
-          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
-          echo
-          echo "Vercel redeploy triggered."
+          # Rebuild the latest production deployment (picks up CONTENT_REPO_URL sync on build)
+          vercel redeploy https://react-mastery-day1.vercel.app --token="$VERCEL_TOKEN" --yes
+          echo "Vercel production redeploy triggered."
