@@ -1,6 +1,8 @@
 # React Mastery Content
 
-Separate content repository for the [React Mastery](https://github.com/YOUR_USERNAME/react-mastery-day1) learning platform.
+Public content repository for the React Mastery learning platform.
+
+**Repo:** https://github.com/Tlhogi007/react-mastery-content
 
 Contributors add markdown here. The app syncs this repo and generates the Community page.
 
@@ -45,4 +47,4 @@ Content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.
 
 ## Platform
 
-This content is consumed by the React Mastery app via `npm run sync:content`.
+Consumed by the React Mastery app via `npm run sync:content`.
