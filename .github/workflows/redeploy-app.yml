@@ -18,10 +18,6 @@ jobs:
         run: |
           if [ -z "$VERCEL_TOKEN" ]; then
             echo "Missing secret VERCEL_TOKEN."
-            echo "Create a token at https://vercel.com/account/tokens"
-            echo "Then: gh secret set VERCEL_TOKEN -R Tlhogi007/react-mastery-content"
             exit 1
           fi
-          # Rebuild the latest production deployment (picks up CONTENT_REPO_URL sync on build)
-          vercel redeploy https://react-mastery-day1.vercel.app --token="$VERCEL_TOKEN" --yes
-          echo "Vercel production redeploy triggered."
+          vercel redeploy https://react-mastery-day1.vercel.app --token="$VERCEL_TOKEN"
