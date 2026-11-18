@@ -35,3 +35,7 @@ On the Vercel project, set (optional — the app also defaults to this URL):
 - Push any commit to `main`
 
 You should see a new deployment on Vercel.
+
+## Live app
+
+https://react-mastery-day1.vercel.app
